@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мой первый проект</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .container {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+<h1>CI/CD!</h1>
+<div class="container">
+    <p>Эта страница была автоматически развёрнута.</p>
+    <p>Время последнего обновления: <span id="timestamp"></span></p>
+</div>
+
+<script>
+    document.getElementById('timestamp').textContent = new Date().toLocaleString();
+</script>
+</body>
+</html>
