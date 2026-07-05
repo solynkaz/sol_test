@@ -3,6 +3,9 @@ services:
     build:
       context: ./sol-test-ng
       dockerfile: Dockerfile
+    environment:
+      PORT: 80
+      BACKEND_URL: http://backend:8080
     ports:
       - "${FRONTEND_PORT:-8080}:80"
     depends_on:
@@ -17,14 +20,9 @@ services:
       dockerfile: Dockerfile
     environment:
       PORT: 8080
+      NODE_ENV: production
     ports:
       - "${BACKEND_PORT:-8081}:8080"
-    healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:8080/health"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 10s
     networks:
       - app
 
