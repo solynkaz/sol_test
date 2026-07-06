@@ -8,9 +8,10 @@ API_LOCATION=""
 if [ -n "$BACKEND_URL" ]; then
   BACKEND_URL="${BACKEND_URL%/}"
   BACKEND_HOST="$(printf '%s' "$BACKEND_URL" | sed -E 's#^https?://([^/:]+).*#\1#')"
+  DNS_RESOLVERS="$(awk '/^nameserver/{printf "%s ", $2}' /etc/resolv.conf)"
   API_LOCATION="
     location ~ ^/api/?(.*)$ {
-        resolver 127.0.0.11 8.8.8.8 1.1.1.1 valid=10s ipv6=off;
+        resolver ${DNS_RESOLVERS:-127.0.0.11} valid=10s ipv6=off;
         resolver_timeout 5s;
         set \$backend_upstream \"${BACKEND_URL}\";
         rewrite ^/api/?(.*)$ /\$1 break;
