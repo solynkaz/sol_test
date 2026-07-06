@@ -49,7 +49,7 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
             }
           },
           "defaultConfiguration": "production"
@@ -61,7 +61,8 @@
               "buildTarget": "sol-test-ng:build:production"
             },
             "development": {
-              "buildTarget": "sol-test-ng:build:development"
+              "buildTarget": "sol-test-ng:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
