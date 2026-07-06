@@ -1,4 +1,4 @@
-namespace sol_test_dotnet;
+namespace SolTestDotNet;
 
 public class WeatherForecast
 {

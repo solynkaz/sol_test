@@ -1,21 +1,21 @@
-using Microsoft.AspNetCore.Mvc;
+namespace SolTestDotNet.Controllers;
 
-namespace sol_test_dotnet.Controllers;
+using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("hp")]
-public class HealthController : ControllerBase
+public partial class HealthController(ILogger<HealthController> logger) : ControllerBase
 {
-    private readonly ILogger<HealthController> _logger;
-
-    public HealthController(ILogger<HealthController> logger)
-    {
-        _logger = logger;
-    }
-
-    [HttpGet(Name = "/health")]
+    [HttpGet(Name = "Get Health Check")]
     public IActionResult Get()
     {
+        LogHealthCheckRequested(logger);
         return Ok(new { status = "ok" });
     }
+
+    [LoggerMessage(
+        EventId = 1,
+        Level = LogLevel.Information,
+        Message = "Health check requested")]
+    private static partial void LogHealthCheckRequested(ILogger logger);
 }
