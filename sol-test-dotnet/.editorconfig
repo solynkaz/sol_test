@@ -1,0 +1,15 @@
+root = true
+
+[*.cs]
+
+# Prefix local calls with this.
+dotnet_diagnostic.SA1101.severity = none
+# mandatory xml file header
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1633.md
+dotnet_diagnostic.SA1633.severity = none
+ 
+dotnet_diagnostic.SA1600.severity = none
+dotnet_diagnostic.SA1601.severity = none
+
+# XML comment analysis is disabled due to project configuration
+dotnet_diagnostic.SA0001.severity = none
