@@ -1,4 +1,4 @@
-import {Component, inject, signal} from '@angular/core';
+import {Component, inject, isDevMode, signal} from '@angular/core';
 import {environment} from './environments/environment';
 import {HttpClient} from '@angular/common/http';
 
@@ -10,7 +10,10 @@ import {HttpClient} from '@angular/common/http';
 })
 export class App {
   private readonly _httpClient = inject(HttpClient);
+  protected readonly environment = environment;
+
   protected response = signal<string | null>(null);
+  protected backendUrl = signal<string>(isDevMode() ? '' : environment.dotnetUrl);
 
   protected async tryToSendRequest(): Promise<void> {
     this._httpClient.get(`${environment.dotnetUrl}/hp`, { responseType: 'text' }).subscribe({
@@ -18,4 +21,5 @@ export class App {
       error: (error) => this.response.set(`Request failed: ${error.message}`),
     });
   }
+
 }

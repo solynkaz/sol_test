@@ -1,7 +1,15 @@
-<div style="display: block; width: 100%; height: 100%; align-content: center">
-  <button (click)="tryToSendRequest()">Connect</button>
+<div style="display: flex; flex-direction: row; gap: 16px;">
+  Connect to backend but first you need to wake it up -> <a
+  [href]="backendUrl()">Wake me up</a>
+  <span>then -></span>
+  <button (click)="tryToSendRequest()">
+    Connect
+  </button>
+  <link [href]="environment.dotnetUrl">
 </div>
 
 @if (response()) {
   <span>{{ response() }}</span>
 }
+
+<div class="footer">There will be a game recommendation system soon, i hope :D</div>
