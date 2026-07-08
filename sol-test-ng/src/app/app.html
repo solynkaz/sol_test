@@ -1,4 +1,4 @@
-<div style="display: flex; flex-direction: row; gap: 16px;">
+<div style="display: flex; flex-direction: row; gap: 16px; padding: 20px">
   Connect to backend but first you need to wake it up -> <a
   [href]="backendUrl()">Wake me up</a>
   <span>then -></span>
@@ -6,10 +6,10 @@
     Connect
   </button>
   <link [href]="environment.dotnetUrl">
-</div>
 
-@if (response()) {
-  <span>{{ response() }}</span>
-}
+  @if (response()) {
+    <span>{{ response() }}</span>
+  }
+</div>
 
 <div class="footer">There will be a game recommendation system soon, i hope :D</div>
