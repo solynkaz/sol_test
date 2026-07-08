@@ -13,7 +13,7 @@ export class App {
   protected readonly environment = environment;
 
   protected response = signal<string | null>(null);
-  protected backendUrl = signal<string>(isDevMode() ? '' : environment.dotnetUrl);
+  protected backendUrl = signal<string>(isDevMode() ? '' : environment.dotnetUrl + '/hp');
 
   protected async tryToSendRequest(): Promise<void> {
     this._httpClient.get(`${environment.dotnetUrl}/hp`, { responseType: 'text' }).subscribe({
